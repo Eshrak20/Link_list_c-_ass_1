@@ -18,11 +18,16 @@ void Insert_value_at_tail(Group *&head, int value)
 
     Group *newNode = new Group(value);
     Group *temp = head;
-    if (temp->next != NULL)
+    if (head == NULL)
     {
-        temp = temp->next;
+        head = newNode;
         return;
     }
+    while (temp->next != NULL)
+    {
+        temp = temp->next;
+    }
+
     temp->next = newNode;
 };
 void Insert_value_at_head(Group *&head, int value)
