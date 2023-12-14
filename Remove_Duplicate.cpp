@@ -48,7 +48,6 @@ void print_link_list(Group *head)
     while (temp != NULL)
     {
         delete_node(temp, temp->value);
-
         temp = temp->next;
     }
 };

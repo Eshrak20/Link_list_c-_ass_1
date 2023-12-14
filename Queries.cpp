@@ -42,6 +42,11 @@ void delete_node(Group *&head, int pos)
 {
 
     Group *temp = head;
+    if (head == NULL)
+    {
+        return;
+    }
+
     if (pos == 0)
     {
         Group *deleteHead = head;
