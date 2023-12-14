@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
-int sum = 0;
 class Group
 {
 public:
@@ -83,12 +82,9 @@ int main()
     int q;
     cin >> q;
     Group *head = NULL;
-    Group *tail = NULL;
     for (int i = 0; i < q; i++)
     {
-
         int index, value;
-
         cin >> index;
         cin >> value;
         if (index == 1)
@@ -101,11 +97,7 @@ int main()
         }
         else if (index == 2)
             delete_node(head, value);
-
         print_link_list(head);
     };
-
     return 0;
 }
-
-//  head jodi 0 de taie le probelm hoy
