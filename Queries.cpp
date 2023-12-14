@@ -43,9 +43,22 @@ void delete_node(Group *head, int pos)
 {
 
     Group *temp = head;
+    if (pos == 0)
+    {
+        /* code */
+    }
+
     for (int i = 1; i <= pos - 1; i++)
     {
         temp = temp->next;
+        if (temp == NULL)
+        {
+            return;
+        }
+    }
+    if (temp->next == NULL)
+    {
+        return;
     }
     Group *deleteNode = temp->next;
     temp->next = temp->next->next;
@@ -62,17 +75,6 @@ void print_link_list(Group *head)
     }
     cout << endl;
 };
-void print_link_list_size(Group *head)
-{
-
-    Group *temp = head;
-    while (temp != NULL)
-    {
-        sum++;
-        temp = temp->next;
-    }
-};
-
 int main()
 {
     int q;
@@ -95,17 +97,12 @@ int main()
             Insert_value_at_head(head, value);
         }
         else if (index == 2)
-        {
-            if (sum > value)
-            {
-                // delete_node(head, value);
-            }
-        }
+            delete_node(head, value);
 
         print_link_list(head);
-    }
-    // print_link_list_size(head);
-    // cout << sum;
+    };
 
     return 0;
 }
+
+//  head jodi 0 de taie le probelm hoy
