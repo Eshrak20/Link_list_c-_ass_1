@@ -39,13 +39,16 @@ void Insert_value_at_head(Group *&head, int value)
     head = newNode;
     return;
 };
-void delete_node(Group *head, int pos)
+void delete_node(Group *&head, int pos)
 {
 
     Group *temp = head;
     if (pos == 0)
     {
-        /* code */
+        Group *deleteHead = head;
+        head = head->next;
+        delete deleteHead;
+        return;
     }
 
     for (int i = 1; i <= pos - 1; i++)
