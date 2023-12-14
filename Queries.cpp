@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <iostream>
 using namespace std;
+int sum = 0;
 class Group
 {
 public:
@@ -12,31 +13,26 @@ public:
         this->next = NULL;
     }
 };
-void Insert_value_at_tail(Group *&head, Group *&tail, int value, int index)
+void Insert_value_at_tail(Group *&head, int value)
 {
 
     Group *newNode = new Group(value);
-    if (head == NULL)
+    Group *temp = head;
+    if (temp->next != NULL)
     {
-        head = newNode;
-        tail = newNode;
+        temp = temp->next;
         return;
     }
-    tail->next = newNode;
-    tail = newNode;
+    temp->next = newNode;
 };
-void Insert_value_at_head(Group *&head, Group *&tail, int value, int index)
+void Insert_value_at_head(Group *&head, int value)
 {
 
     Group *newNode = new Group(value);
-    if (head == NULL)
-    {
-        head = newNode;
-        tail = newNode;
-        return;
-    }
+    Group *temp = head;
     newNode->next = head;
     head = newNode;
+    return;
 };
 void delete_node(Group *head, int pos)
 {
@@ -61,6 +57,17 @@ void print_link_list(Group *head)
     }
     cout << endl;
 };
+void print_link_list_size(Group *head)
+{
+
+    Group *temp = head;
+    while (temp != NULL)
+    {
+        sum++;
+        temp = temp->next;
+    }
+};
+
 int main()
 {
     int q;
@@ -76,19 +83,24 @@ int main()
         cin >> value;
         if (index == 1)
         {
-            Insert_value_at_tail(head, tail, value, index);
+            Insert_value_at_tail(head, value);
         }
         else if (index == 0)
         {
-            Insert_value_at_head(head, tail, value, index);
+            Insert_value_at_head(head, value);
         }
-        else
+        else if (index == 2)
         {
-            delete_node(head, index);
+            if (sum > value)
+            {
+                // delete_node(head, value);
+            }
         }
 
         print_link_list(head);
     }
+    // print_link_list_size(head);
+    // cout << sum;
 
     return 0;
 }
