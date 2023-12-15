@@ -3,7 +3,6 @@
 #include <climits>
 #include <algorithm>
 using namespace std;
-int sum = 0;
 class Group
 {
 public:
@@ -36,8 +35,16 @@ void delete_fun(Group *head, int val)
         if (tmp2 != NULL && tmp2->next->value == val)
         {
             Group *deleteNode = tmp2->next;
-            tmp2->next = tmp2->next->next;
-            delete deleteNode;
+            if (tmp2->next->next == NULL)
+            {
+                // tmp2 = NULL;
+                return;
+            }
+            else
+            {
+                tmp2->next = tmp2->next->next;
+                delete deleteNode;
+            }
         }
         tmp2 = tmp2->next;
     }
