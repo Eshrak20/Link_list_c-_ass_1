@@ -35,18 +35,13 @@ void delete_fun(Group *head, int val)
         if (tmp2 != NULL && tmp2->next->value == val)
         {
             Group *deleteNode = tmp2->next;
-            if (tmp2->next->next == NULL)
-            {
-                // tmp2 = NULL;
-                return;
-            }
-            else
-            {
-                tmp2->next = tmp2->next->next;
-                delete deleteNode;
-            }
+            tmp2->next = deleteNode->next;
+            delete deleteNode;
         }
-        tmp2 = tmp2->next;
+        else
+        {
+            tmp2 = tmp2->next;
+        }
     }
 };
 void print_link_list(Group *head)
@@ -54,7 +49,6 @@ void print_link_list(Group *head)
     Group *temp = head;
     while (temp != NULL)
     {
-
         delete_fun(temp, temp->value);
         cout << temp->value << " ";
         temp = temp->next;
