@@ -28,21 +28,29 @@ void Insert_value(Group *&head, Group *&tail, int value)
     tail->next = newNode;
     tail = newNode;
 };
-
+void delete_fun(Group *head, int val)
+{
+    Group *tmp2 = head;
+    while (tmp2->next != NULL)
+    {
+        if (tmp2 != NULL && tmp2->next->value == val)
+        {
+            Group *deleteNode = tmp2->next;
+            tmp2->next = tmp2->next->next;
+            delete deleteNode;
+        }
+        tmp2 = tmp2->next;
+    }
+};
 void print_link_list(Group *head)
 {
     Group *temp = head;
     while (temp != NULL)
     {
+
+        delete_fun(temp, temp->value);
         cout << temp->value << " ";
         temp = temp->next;
-    }
-    cout << endl;
-    Group *temp_2 = head;
-    while (temp_2 != NULL)
-    {
-        cout << temp_2->value << " ";
-        temp_2 = temp_2->next;
     }
 };
 int main()
